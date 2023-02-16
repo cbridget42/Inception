@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  nginx:
+    build: ./requirements/nginx
+    ports:
+      - 443:443
+    volumes:
+      - ../docker_test/index.html:/var/www/index.html
+      - ./requirements/nginx/tools:/etc/nginx/ssl/
+    restart: always
+    container_name: nginx
+#    depends_on:
+#      - wordpress
