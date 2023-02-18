@@ -50,6 +50,15 @@ services:
     networks:
       - inception
 
+  redis:
+    build: ./requirements/bonus/redis
+    restart: always
+    container_name: redis
+    ports:
+      - 6379:6379
+    networks:
+      - inception
+
 volumes:
   wp-volume:
     driver_opts:
