@@ -59,6 +59,24 @@ services:
     networks:
       - inception
 
+  site:
+    build: ./requirements/bonus/site
+    restart: always
+    container_name: site
+    ports:
+      - 80:80
+
+  adminer:
+    build: ./requirements/bonus/adminer
+    restart: always
+    container_name: adminer
+    ports:
+      - 2121:2121
+    depends_on:
+      - mariadb
+    networks:
+      - inception
+
 volumes:
   wp-volume:
     driver_opts:
