@@ -20,6 +20,9 @@ re: down
 
 clean: down
 	docker system prune --all
+	docker system prune --all --force --volumes
+	docker network prune --force
+	docker volume prune --force
 
 fclean: down
 	docker system prune --all --force --volumes
