@@ -12,6 +12,7 @@ services:
       - inception
     restart: always
     container_name: nginx
+    image: nginx
     depends_on:
       - wordpress
 
@@ -28,6 +29,7 @@ services:
       - 3306:3306
     restart: always
     container_name: mariadb
+    image: mariadb
     volumes:
       - db-volume:/var/lib/mysql/
     networks:
@@ -43,6 +45,7 @@ services:
         DB_PASS: ${DB_PASS}
     restart: always
     container_name: wordpress
+    image: wordpress
     depends_on:
       - mariadb
     volumes:
@@ -54,6 +57,7 @@ services:
     build: ./requirements/bonus/redis
     restart: always
     container_name: redis
+    image: redis
     ports:
       - 6379:6379
     networks:
@@ -63,6 +67,7 @@ services:
     build: ./requirements/bonus/site
     restart: always
     container_name: site
+    image: site
     ports:
       - 80:80
 
@@ -70,6 +75,7 @@ services:
     build: ./requirements/bonus/adminer
     restart: always
     container_name: adminer
+    image: adminer
     ports:
       - 2121:2121
     depends_on:
